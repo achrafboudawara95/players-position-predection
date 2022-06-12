@@ -21,7 +21,7 @@ st.set_page_config(
 
 @st.cache(persist=True)
 def fetch_and_clean_data():
-    data = pd.read_csv("D:/achraf/tek-up/DSN2/ProjetII/players.csv")
+    data = pd.read_csv("players.csv")
 
     data = data.drop_duplicates(subset=['PLAYER'])
     

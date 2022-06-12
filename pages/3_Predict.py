@@ -9,7 +9,7 @@ st.set_page_config(
     page_icon="🤨",
 )
 
-modelxgb = pickle.load(open('D:/achraf/tek-up/DSN2/ProjetII/finalized_model.sav', 'rb'))
+modelxgb = pickle.load(open('finalized_model.sav', 'rb'))
 
 col1, col2 = st.columns(2)
 PAC = col1.slider('Pace rating', 0, 100, 0)
