@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run Home.py
+web: sh setup.sh && python deploy_model.py && streamlit run Home.py
