@@ -8,20 +8,12 @@ data = pd.read_csv("players.csv")
 
 data = data.drop_duplicates(subset=['PLAYER'])
 
-data.info()
-
-data.describe(include = 'all')
-
 data = data[data['POS'] != 'Res']
 data = data[data['POS'] != 'Sub']
-
-data.describe(include = 'all')
 
 data = data.replace(['LWB', 'LB', 'RB', 'RWB', 'LCB', 'RCB'], 'CB')
 data = data.replace(['CDM', 'LM', 'RM', 'CAM', 'RCM', 'RDM', 'LCM', 'LDM', 'LAM', 'RAM'], 'CM')
 data = data.replace(['LW', 'LF', 'ST', 'RF', 'RW', 'LS', 'RS'], 'CF')
-
-
 
 data.POS.unique()
 
