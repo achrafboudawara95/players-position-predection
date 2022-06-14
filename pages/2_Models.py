@@ -98,6 +98,7 @@ df = pd.DataFrame(
 st.title("I) Models performence")
 st.table(df.style.highlight_max(axis=0))
 
+st.title("II) Grid Search")
 @st.cache(persist=True, suppress_st_warning=True)
 def gridSearch():
     #################################################################
@@ -133,12 +134,14 @@ def gridSearch():
     
     #Calculate the score once and use when needed
     acc = grid_xgb.score(xTest,yTest)
+
+    return [
+        "Best params                        : %s" % grid_xgb.best_params_,
+        "Best training data accuracy        : %s" % grid_xgb.best_score_,
+        "Best validation data accuracy (*)  : %s" % acc,
+        "Modeling time                      : %s" % time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time))
+    ]
     
-    st.title("II) Grid Search")
-    
-    st.text("Best params                        : %s" % grid_xgb.best_params_)
-    st.text("Best training data accuracy        : %s" % grid_xgb.best_score_)    
-    st.text("Best validation data accuracy (*)  : %s" % acc)
-    st.text("Modeling time                      : %s" % time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time)))
-    
-gridSearch()
+pr = gridSearch()
+for p in pr:
+    st.text(p)
