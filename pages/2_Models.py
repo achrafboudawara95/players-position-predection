@@ -106,9 +106,8 @@ def gridSearch():
     #################################################################
     params = {
         'booster': 'gbtree',
-        'max_depth': 5,
         'objective': 'multi:softprob',
-        'n_estimators':100
+        'learning_rate':0.1
     }
     pipe_xgb = Pipeline([
         ('clf', xgb(**params))
@@ -117,6 +116,7 @@ def gridSearch():
     parameters_xgb = {
             'clf__n_estimators':[100,200], 
             'clf__max_depth':[5,10], 
+            'clf__learning_rate':[0.1,0.5], 
         }
     
     grid_xgb = GridSearchCV(pipe_xgb,
